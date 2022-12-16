@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class Enemy : MonoBehaviour
 {
@@ -19,23 +20,23 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    public float speed = 2.0f;
     private GameObject player;
-    private Rigidbody enemyRb;
+    private NavMeshAgent enemyAgent;
 
     // Start is called before the first frame update
     void Start()
     {
-        enemyRb = GetComponent<Rigidbody>();
+        enemyAgent = GetComponent<NavMeshAgent>();
         player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
     void Update()
     {
-        Vector3 lookDirection = (player.transform.position - transform.position).normalized;
-        enemyRb.AddForce(lookDirection * speed);
+        enemyAgent.destination = player.transform.position;
 
+        //Vector3 lookDirection = (player.transform.position - transform.position).normalized;
+        //enemyRb.AddForce(lookDirection * speed);
     }
 
     void OnCollisionEnter(Collision collision)

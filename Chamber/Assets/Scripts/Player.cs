@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
-[RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(NavMeshAgent))]
 public class Player : MonoBehaviour
 {
-    Rigidbody rigid;
-    float player_speed = 3;
+    private NavMeshAgent playerAgent;
+    
+    float playerSpeed = 0.05f;
 
     static bool playerAlive = true;
     static bool isInputEnabled = true;
 
     public WeaponSettings gunType;
+
+    public GameObject playerRayTarget;
+
+    public GameObject playerWeapon;
 
     static private Player _S;
     static public Player S
@@ -36,7 +42,7 @@ public class Player : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rigid = GetComponent<Rigidbody>();
+        playerAgent = GetComponent<NavMeshAgent>();
         equipWeapon();
     }
 
@@ -54,7 +60,7 @@ public class Player : MonoBehaviour
                 player_movement.Normalize();
             }
 
-            rigid.velocity = player_movement * player_speed;
+            playerAgent.Move(player_movement * playerSpeed);
 
             if (Input.GetButtonDown("Fire1"))
             {
@@ -65,22 +71,34 @@ public class Player : MonoBehaviour
 
     void FireBullet()
     {
+        //calculate if collided
+        Vector3 collidedObject = playerRayTarget.GetComponent<TargetRayObject>().shootRayAgainstScene();
         
-        Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePos3D.y = 0f;
-        //Debug.Log(mousePos3D.z + " " + mousePos3D.y + " " + mousePos3D.x);
-
-        gunType.weaponModel.GetComponent<IWeaponTemplate>().fireWeapon(gunType.bulletType, transform, mousePos3D);
-        
+        Debug.Log(collidedObject + " hit position");
+        if(collidedObject == new Vector3(-100, -100, -100))
+        {
+            //Default angle for bullets (i.e perfectly horizontal with weapon object)
+            Vector3 mousePos3D = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            mousePos3D.y = playerWeapon.transform.position.y;
+            gunType.weaponModel.GetComponent<IWeaponTemplate>().fireWeapon(gunType.bulletType, playerWeapon.transform, mousePos3D);
+        } else
+        {
+            //Angle bullets toward enemy (closest raycasted enemy)
+            gunType.weaponModel.GetComponent<IWeaponTemplate>().fireWeapon(gunType.bulletType, playerWeapon.transform, collidedObject);
+        }        
     }
 
     void equipWeapon()
     {
+        Transform seletedWeapon = playerWeapon.transform;
+
         GameObject currentWeapon = Instantiate<GameObject>(gunType.weaponModel);
         currentWeapon.name = gunType.weaponName;
-        if (transform.Find("Character").Find("Weapon") != null)
+        if (seletedWeapon != null)
         {
-            currentWeapon.transform.SetParent(transform.Find("Character").Find("Weapon"));
+            currentWeapon.transform.position = 
+                new Vector3(seletedWeapon.transform.position.x, seletedWeapon.transform.position.y, currentWeapon.transform.position.z);
+            currentWeapon.transform.SetParent(seletedWeapon);
         }
     }
 
@@ -93,7 +111,8 @@ public class Player : MonoBehaviour
         //Stop player from being affected by physics
         playerAlive = false;
         isInputEnabled = false;
-        rigid.isKinematic = true;
+        
+        //rigid.isKinematic = true;
 
         //Play death animation
     }

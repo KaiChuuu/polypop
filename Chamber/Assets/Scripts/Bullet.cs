@@ -28,8 +28,6 @@ public class Bullet : MonoBehaviour
         transform.SetParent(BULLET_ANCHOR, true);
 
         Invoke("DestroyMe", lifeTime);
-
-        GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
     }
 
     void DestroyMe()
@@ -41,6 +39,11 @@ public class Bullet : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void FireBullet()
+    {
+        GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
     }
 
     private void OnCollisionEnter(Collision collision)

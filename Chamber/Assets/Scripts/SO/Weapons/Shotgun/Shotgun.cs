@@ -6,24 +6,29 @@ public class Shotgun : MonoBehaviour, IWeaponTemplate
 {
     public float shotgunSpread = 7f;
 
-    public void fireWeapon(GameObject bullet, Transform player, Vector3 mousePosition3D)
+    public void fireWeapon(GameObject bullet, Transform gun, Vector3 mousePosition3D)
     {
-        GameObject go1 = Instantiate<GameObject>(bullet);
-        GameObject go2 = Instantiate<GameObject>(bullet);
-        GameObject go3 = Instantiate<GameObject>(bullet);
+        GameObject bullet1 = Instantiate<GameObject>(bullet);
+        GameObject bullet2 = Instantiate<GameObject>(bullet);
+        GameObject bullet3 = Instantiate<GameObject>(bullet);
 
-        go1.transform.position = player.position;
-        go2.transform.position = player.position;
-        go3.transform.position = player.position;
+        bullet1.transform.position = gun.position;
+        bullet2.transform.position = gun.position;
+        bullet3.transform.position = gun.position;
 
-        go1.transform.LookAt(mousePosition3D);
-        go2.transform.LookAt(mousePosition3D);
-        go3.transform.LookAt(mousePosition3D);
-        go2.transform.Rotate(new Vector3(0, 1, 0), shotgunSpread);
-        go3.transform.Rotate(new Vector3(0, 1, 0), -shotgunSpread);
+        int layerMask = 1 << 8;
+        layerMask = ~layerMask;
 
-        Physics.IgnoreCollision(go1.GetComponent<SphereCollider>(), player.GetComponent<CapsuleCollider>());
-        Physics.IgnoreCollision(go2.GetComponent<SphereCollider>(), player.GetComponent<CapsuleCollider>());
-        Physics.IgnoreCollision(go3.GetComponent<SphereCollider>(), player.GetComponent<CapsuleCollider>());
+        bullet1.transform.LookAt(mousePosition3D);
+        bullet2.transform.LookAt(mousePosition3D);
+        bullet3.transform.LookAt(mousePosition3D);
+
+        bullet1.GetComponent<Bullet>().FireBullet();
+        
+        bullet2.transform.Rotate(new Vector3(0,-1,0), shotgunSpread);
+        bullet2.GetComponent<Bullet>().FireBullet();
+
+        bullet3.transform.Rotate(new Vector3(0,-1,0), -shotgunSpread);
+        bullet3.GetComponent<Bullet>().FireBullet();
     }
 }

@@ -5,7 +5,7 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     float timePlayed = 0;
-    static int playerScore = 0;
+    static int playerScore = 0; //In seconds
 
     public GameObject canvas;
     public GameObject player;
@@ -15,6 +15,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject enemyPrefab;
 
+    public GameObject gates;
+    public int disableGateTime = 10;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,7 +26,8 @@ public class GameManager : MonoBehaviour
 
     void setupGame()
     {
-        StartCoroutine(SpawnEnemies());
+        //StartCoroutine(SpawnEnemies());
+        StartCoroutine(UnlockGates());
     }
     
     IEnumerator SpawnEnemies()
@@ -64,6 +68,20 @@ public class GameManager : MonoBehaviour
         {
             playerScore = Mathf.FloorToInt(timePlayed % 60);
             canvas.GetComponent<CanvasManager>().updateScoreBoard(playerScore);
+        }
+    }
+
+    IEnumerator UnlockGates()
+    {
+        while (gates.GetComponent<GateManager>().getGateAmount() > 0){
+
+            Debug.Log("time");
+
+
+            //Destroy Gate
+            gates.GetComponent<GateManager>().DisableGate();
+
+            yield return new WaitForSeconds(disableGateTime);
         }
     }
 }

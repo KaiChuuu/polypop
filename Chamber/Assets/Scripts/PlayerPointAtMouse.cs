@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerPointAtMouse : MonoBehaviour
 {
 
+    
     Vector3 mousePointIn3d;
 
     // Start is called before the first frame update
@@ -17,7 +18,8 @@ public class PlayerPointAtMouse : MonoBehaviour
     void Update()
     {
         mousePointIn3d = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-        mousePointIn3d.y = 0f;
+
+        mousePointIn3d.y = transform.position.y;
 
         transform.LookAt(mousePointIn3d);
     }
