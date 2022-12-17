@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(GameObject))]
 public class TargetRayObject : MonoBehaviour
 {
     //default miss value
@@ -24,12 +25,12 @@ public class TargetRayObject : MonoBehaviour
         transform.position = new Vector3(target.transform.position.x, 20, target.transform.position.z);
     }
 
-    public bool collidedWithObject()
+    public bool CollidedWithObject()
     {
         return true;
     }
 
-    public Vector3 shootRayAgainstScene()
+    public Vector3 ShootRayAgainstScene()
     {
         int layerMask = 1 << 8;
         layerMask = ~layerMask;
@@ -45,7 +46,7 @@ public class TargetRayObject : MonoBehaviour
             }
 
             Debug.Log("Did Hit Target");
-            return hit.transform.gameObject.GetComponent<TargetRayObject>().actualObjectPosition();          
+            return hit.transform.gameObject.GetComponent<TargetRayObject>().ActualObjectPosition();          
         }
         else
         {
@@ -54,7 +55,7 @@ public class TargetRayObject : MonoBehaviour
         }
     }
 
-    public Vector3 actualObjectPosition()
+    public Vector3 ActualObjectPosition()
     {
         return target.transform.position;
     }

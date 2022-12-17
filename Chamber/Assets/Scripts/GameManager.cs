@@ -21,10 +21,10 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        setupGame();
+        SetupGame();
     }
 
-    void setupGame()
+    void SetupGame()
     {
         //StartCoroutine(SpawnEnemies());
         StartCoroutine(UnlockGates());
@@ -32,7 +32,7 @@ public class GameManager : MonoBehaviour
     
     IEnumerator SpawnEnemies()
     {
-        while (player.GetComponent<Player>().getPlayerAliveStatus())
+        while (player.GetComponent<Player>().GetPlayerAliveStatus())
         {
             int spawnAmount = Random.Range(1, 3);
 
@@ -64,16 +64,16 @@ public class GameManager : MonoBehaviour
 
         //Debug.Log(Mathf.FloorToInt(timePlayed % 60));
 
-        if (player.GetComponent<Player>().getPlayerAliveStatus())
+        if (player.GetComponent<Player>().GetPlayerAliveStatus())
         {
             playerScore = Mathf.FloorToInt(timePlayed % 60);
-            canvas.GetComponent<CanvasManager>().updateScoreBoard(playerScore);
+            canvas.GetComponent<CanvasManager>().UpdateScoreBoard(playerScore);
         }
     }
 
     IEnumerator UnlockGates()
     {
-        while (gates.GetComponent<GateManager>().getGateAmount() > 0){
+        while (gates.GetComponent<GateManager>().GetGateAmount() > 0){
 
             Debug.Log("time");
 

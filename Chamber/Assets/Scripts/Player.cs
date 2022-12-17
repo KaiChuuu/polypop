@@ -72,7 +72,7 @@ public class Player : MonoBehaviour
     void FireBullet()
     {
         //calculate if collided
-        Vector3 collidedObject = playerRayTarget.GetComponent<TargetRayObject>().shootRayAgainstScene();
+        Vector3 collidedObject = playerRayTarget.GetComponent<TargetRayObject>().ShootRayAgainstScene();
         
         Debug.Log(collidedObject + " hit position");
         if(collidedObject == new Vector3(-100, -100, -100))
@@ -102,24 +102,33 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void disablePlayer()
+    public void DamagePlayer()
+    {
+        //Could make hp system
+
+        DisablePlayer();
+    }
+
+    public void DisablePlayer()
     {
         //Remove player visibility
-        transform.GetChild(0).gameObject.SetActive(false);
+        transform.Find("Character").gameObject.SetActive(false);
 
         //Remove player controls & shooting
-        //Stop player from being affected by physics
-        playerAlive = false;
         isInputEnabled = false;
-        
-        //rigid.isKinematic = true;
+        playerAlive = false;
 
         //Play death animation
+
+        //Freeze time (fancy end effect)
+        Time.timeScale = 0.5f;
+
+        
     }
 
 
     //Getter & Setters
-    public bool getPlayerAliveStatus()
+    public bool GetPlayerAliveStatus()
     {
         return playerAlive;
     }

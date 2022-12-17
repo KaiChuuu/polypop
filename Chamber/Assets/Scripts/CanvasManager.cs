@@ -21,7 +21,7 @@ public class CanvasManager : MonoBehaviour
         
     }
 
-    public void updateScoreBoard(int score)
+    public void UpdateScoreBoard(int score)
     {
         scoreBoard.text = score.ToString();
     }

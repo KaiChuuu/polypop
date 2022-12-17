@@ -5,9 +5,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy Setting")]
 public class EnemySettings : ScriptableObject
 {
-    GameObject enemyModel;
+    public GameObject enemyModel;
 
     public int health;
 
     public float speed;
+
+    public string enemyName;
 }

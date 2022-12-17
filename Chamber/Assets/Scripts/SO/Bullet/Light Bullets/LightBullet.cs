@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-public class Bullet : MonoBehaviour
+public class LightBullet : MonoBehaviour, IBulletTemplate
 {      
     static private Transform _BULLET_ANCHOR;
     static Transform BULLET_ANCHOR
@@ -19,8 +19,9 @@ public class Bullet : MonoBehaviour
         }
     }
 
-    public float bulletSpeed = 20;
-    public float lifeTime = 2;
+    private int bulletDamage = -1;
+    private float bulletSpeed = 20;
+    private float lifeTime = 2;
 
     // Start is called before the first frame update
     void Start()
@@ -30,15 +31,17 @@ public class Bullet : MonoBehaviour
         Invoke("DestroyMe", lifeTime);
     }
 
-    void DestroyMe()
-    {
-        Destroy(gameObject);
-    }
-
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    public void DestroyMe()
+    {
+        //if i wanted to add bullet pierce, it would be here.
+
+        Destroy(gameObject);
     }
 
     public void FireBullet()
@@ -46,11 +49,13 @@ public class Bullet : MonoBehaviour
         GetComponent<Rigidbody>().velocity = transform.forward * bulletSpeed;
     }
 
-    private void OnCollisionEnter(Collision collision)
+    public void SetBulletDamage(int damage)
     {
-        if(collision.gameObject.tag == "Player")
-        {
-            
-        }
+        bulletDamage = damage;
+    }
+
+    public int GetBulletDamage()
+    {
+        return bulletDamage;
     }
 }

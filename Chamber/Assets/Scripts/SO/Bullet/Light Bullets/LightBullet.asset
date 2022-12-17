@@ -9,8 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ffa00f41970e64d46a4d5f478dd45d12, type: 3}
-  m_Name: Basic Enemy
+  m_Script: {fileID: 11500000, guid: e9313bc8eeb0eae41b5542d34b89c16e, type: 3}
+  m_Name: LightBullet
   m_EditorClassIdentifier: 
-  health: 0
-  speed: 0
+  damage: 1
+  bulletSpeed: 20
+  bulletLifetime: 2

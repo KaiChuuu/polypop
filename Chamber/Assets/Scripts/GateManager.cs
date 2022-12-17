@@ -18,7 +18,7 @@ public class GateManager : MonoBehaviour
         
     }
 
-    public int getGateAmount()
+    public int GetGateAmount()
     {
         return gateAmount;
     }

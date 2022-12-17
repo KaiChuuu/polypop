@@ -23,12 +23,12 @@ public class Shotgun : MonoBehaviour, IWeaponTemplate
         bullet2.transform.LookAt(mousePosition3D);
         bullet3.transform.LookAt(mousePosition3D);
 
-        bullet1.GetComponent<Bullet>().FireBullet();
+        bullet1.GetComponent<IBulletTemplate>().FireBullet();
         
         bullet2.transform.Rotate(new Vector3(0,-1,0), shotgunSpread);
-        bullet2.GetComponent<Bullet>().FireBullet();
+        bullet2.GetComponent<IBulletTemplate>().FireBullet();
 
         bullet3.transform.Rotate(new Vector3(0,-1,0), -shotgunSpread);
-        bullet3.GetComponent<Bullet>().FireBullet();
+        bullet3.GetComponent<IBulletTemplate>().FireBullet();
     }
 }
