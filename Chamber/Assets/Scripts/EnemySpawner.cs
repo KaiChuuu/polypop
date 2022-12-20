@@ -45,10 +45,13 @@ public class EnemySpawner : MonoBehaviour
             
             //Set anchor for enemy gameObjects
             enemy.transform.SetParent(enemyAnchor.transform, true);
-            //Give enemy corresponding stats
-            enemy.GetComponent<IEnemyTemplate>().SetEnemyStats(selectedEnemy.speed, selectedEnemy.health);
 
-            enemy.transform.position = spawnPosition;
+            GameObject enemyModel = enemy.transform.Find("EnemyModel").gameObject;
+
+            //Give enemy corresponding stats
+            enemyModel.GetComponent<IEnemyTemplate>().SetEnemyStats(selectedEnemy.speed, selectedEnemy.health);
+
+            enemyModel.transform.position = spawnPosition;
 
             yield return new WaitForSeconds(spawnSpeed);
         }
