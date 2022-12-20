@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     void SetupGame()
     {
         //StartCoroutine(SpawnEnemies());
-        StartCoroutine(UnlockGates());
+        //StartCoroutine(UnlockGates());
     }
     
     IEnumerator SpawnEnemies()

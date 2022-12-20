@@ -6,24 +6,6 @@ using UnityEngine.AI;
 [RequireComponent(typeof(NavMeshAgent))]
 public class BasicEnemy : MonoBehaviour, IEnemyTemplate
 {
-    //Don't need at the moment, creates anchor for enemies.
-    /*
-    static private Transform _ENEMY_ANCHOR;
-
-    static Transform ENEMY_ANCHOR
-    {
-        get
-        {
-            if(_ENEMY_ANCHOR == null)
-            {
-                GameObject go = new GameObject("EnemyAnchor");
-                _ENEMY_ANCHOR = go.transform;
-            }
-            return _ENEMY_ANCHOR;
-        }
-    }
-    */
-
     private float enemySpeed = 0.5f;
     private int enemyHealth = 2;
 
@@ -94,13 +76,9 @@ public class BasicEnemy : MonoBehaviour, IEnemyTemplate
         enemyAgent.destination = player.transform.position;
     }
 
-    public void SetEnemySpeed(float speed)
+    public void SetEnemyStats(float speed, int health)
     {
         enemySpeed = speed;
-    }
-
-    public void SetEnemyHealth(int health)
-    {
         enemyHealth = health;
     }
 }

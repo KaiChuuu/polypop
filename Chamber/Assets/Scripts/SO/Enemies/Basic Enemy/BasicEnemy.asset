@@ -12,7 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ffa00f41970e64d46a4d5f478dd45d12, type: 3}
   m_Name: BasicEnemy
   m_EditorClassIdentifier: 
-  enemyModel: {fileID: 0}
+  enemyModel: {fileID: 4559014207725046521, guid: a5b543cb01e4d5d478090e081096ce57,
+    type: 3}
   health: 2
   speed: 1
   enemyName: Basic Enemy
