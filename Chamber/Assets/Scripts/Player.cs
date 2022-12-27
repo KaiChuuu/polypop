@@ -19,6 +19,9 @@ public class Player : MonoBehaviour
 
     public GameObject playerWeapon;
 
+    public GameObject gameManager;
+
+    //Could be used in the future for reviving player feature
     static private Player _S;
     static public Player S
     {
@@ -43,7 +46,8 @@ public class Player : MonoBehaviour
     void Start()
     {
         playerAgent = GetComponent<NavMeshAgent>();
-        equipWeapon();
+        InitializePlayer();
+        EquipWeapon();
     }
 
     // Update is called once per frame
@@ -88,7 +92,18 @@ public class Player : MonoBehaviour
         }        
     }
 
-    void equipWeapon()
+    void InitializePlayer()
+    {
+        isInputEnabled = true;
+        playerAlive = true;
+
+        transform.Find("Character").gameObject.SetActive(true);
+        transform.gameObject.GetComponent<NavMeshAgent>().enabled = true;
+
+        Time.timeScale = 1f;
+    }
+
+    void EquipWeapon()
     {
         Transform seletedWeapon = playerWeapon.transform;
 
@@ -113,17 +128,19 @@ public class Player : MonoBehaviour
     {
         //Remove player visibility
         transform.Find("Character").gameObject.SetActive(false);
+        transform.gameObject.GetComponent<NavMeshAgent>().enabled = false;
 
         //Remove player controls & shooting
         isInputEnabled = false;
         playerAlive = false;
 
-        //Play death animation
-
-        //Freeze time (fancy end effect)
+        //Slow time down (fancy end effect)
         Time.timeScale = 0.5f;
 
-        
+        //Play death animation
+
+        //Alert GameManager
+        gameManager.GetComponent<GameManager>().GameOver();
     }
 
 

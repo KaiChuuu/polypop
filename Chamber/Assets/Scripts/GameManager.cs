@@ -4,16 +4,16 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public GameObject[] islands;
+
+    private int currentIsland = 0;
+    private GameObject currentIslandObject;
+
     float timePlayed = 0;
     static int playerScore = 0; //In seconds
 
     public GameObject canvas;
     public GameObject player;
-
-    public GameObject spawnField;
-    public float spawnDelay = 5.0f;
-
-    public GameObject enemyPrefab;
 
     public GameObject gates;
     public int disableGateTime = 10;
@@ -26,43 +26,16 @@ public class GameManager : MonoBehaviour
 
     void SetupGame()
     {
-        //StartCoroutine(SpawnEnemies());
+        currentIslandObject = Instantiate<GameObject>(islands[currentIsland]);
+        
+
         //StartCoroutine(UnlockGates());
-    }
-    
-    IEnumerator SpawnEnemies()
-    {
-        while (player.GetComponent<Player>().GetPlayerAliveStatus())
-        {
-            int spawnAmount = Random.Range(1, 3);
-
-            //Debug.Log(spawnField.gameObject.transform.position);
-            Vector3 spawnPosition = spawnField.gameObject.transform.position;
-
-            Vector3 spawnRange = spawnField.gameObject.GetComponent<BoxCollider>().size;
-            spawnRange /= 2;
-
-            float randomXPosition = Random.Range(-spawnRange.x, spawnRange.x);
-            float randomZPosition = Random.Range(-spawnRange.z, spawnRange.z);
-
-            spawnPosition.x += randomXPosition;
-            spawnPosition.z += randomZPosition;
-            //Debug.Log(spawnPosition);
-
-            //Spawn Enemy
-            GameObject enemy = Instantiate<GameObject>(enemyPrefab);
-            enemy.transform.position = spawnPosition;
-
-            yield return new WaitForSeconds(spawnDelay);
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
         timePlayed += Time.deltaTime;
-
-        //Debug.Log(Mathf.FloorToInt(timePlayed % 60));
 
         if (player.GetComponent<Player>().GetPlayerAliveStatus())
         {
@@ -71,6 +44,17 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void GameOver()
+    {
+        //Display GameOver screen
+        canvas.GetComponent<CanvasManager>().DisplayGameOverScreen(playerScore);
+
+        //Stop enemy spawner
+        currentIslandObject.GetComponent<MapManager>().DisableSpawners();
+    }
+
+
+    /*
     IEnumerator UnlockGates()
     {
         while (gates.GetComponent<GateManager>().GetGateAmount() > 0){
@@ -84,4 +68,5 @@ public class GameManager : MonoBehaviour
             yield return new WaitForSeconds(disableGateTime);
         }
     }
+    */
 }
