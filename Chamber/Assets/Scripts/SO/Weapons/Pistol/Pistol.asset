@@ -17,3 +17,5 @@ MonoBehaviour:
   bulletType: {fileID: 6182013476090510646, guid: be0b4a15ecd53774ba25e4513995549b,
     type: 3}
   weaponName: Pistol
+  weaponShopModel: {fileID: 3961644859542528472, guid: 73ca0e538aa2f3b42a3ab43187eda4a8,
+    type: 3}

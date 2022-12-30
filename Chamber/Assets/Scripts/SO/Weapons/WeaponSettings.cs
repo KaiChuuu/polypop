@@ -11,4 +11,6 @@ public class WeaponSettings : ScriptableObject
     public GameObject bulletType;
 
     public string weaponName;
+
+    public GameObject weaponShopModel;
 }
