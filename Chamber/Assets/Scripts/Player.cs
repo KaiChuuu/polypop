@@ -13,7 +13,7 @@ public class Player : MonoBehaviour
     static bool playerAlive = true;
     static bool isInputEnabled = true;
 
-    public WeaponSettings gunType;
+    private WeaponSettings gunType;
 
     public GameObject playerRayTarget;
 
@@ -107,6 +107,8 @@ public class Player : MonoBehaviour
     {
         Transform seletedWeapon = playerWeapon.transform;
 
+        gunType = gameManager.GetComponent<GameManager>().LocateSelectedWeapon();
+        
         GameObject currentWeapon = Instantiate<GameObject>(gunType.weaponModel);
         currentWeapon.name = gunType.weaponName;
         if (seletedWeapon != null)

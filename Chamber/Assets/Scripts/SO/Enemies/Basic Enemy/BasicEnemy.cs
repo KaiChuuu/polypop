@@ -9,6 +9,7 @@ public class BasicEnemy : MonoBehaviour, IEnemyTemplate
     private float enemySpeed = 0.5f;
     private int enemyHealth = 2;
 
+    private GameObject gameManager;
     private GameObject player;
     private NavMeshAgent enemyAgent;
 
@@ -16,6 +17,7 @@ public class BasicEnemy : MonoBehaviour, IEnemyTemplate
     void Start()
     {
         enemyAgent = GetComponent<NavMeshAgent>();
+        gameManager = GameObject.Find("GameManager");
         player = GameObject.Find("Player");
     }
 
@@ -51,6 +53,9 @@ public class BasicEnemy : MonoBehaviour, IEnemyTemplate
 
     void DestroyMe()
     {
+        //Update total kill count
+        gameManager.GetComponent<GameManager>().UpdateKillTotal();
+
         Destroy(gameObject.transform.parent.gameObject);
 
         //Death animation

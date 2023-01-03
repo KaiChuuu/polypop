@@ -9,4 +9,14 @@ public class MenuManager : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
+
+    public void ViewShop()
+    {
+        SceneManager.LoadScene(2);
+    }
+
+    public void ViewStats()
+    {
+        SceneManager.LoadScene(3);
+    }
 }

@@ -15,6 +15,7 @@ public class CanvasManager : MonoBehaviour
     public GameObject gameOverObjects;
 
     public TextMeshProUGUI finalScore;
+    public TextMeshProUGUI finalKillCount;
 
     public Button playAgainButton;
     public Button shopButton;
@@ -45,7 +46,7 @@ public class CanvasManager : MonoBehaviour
     /*************************************************/
     //Game over UI
     /*************************************************/
-    public void DisplayGameOverScreen(int finalScoreCount)
+    public void DisplayGameOverScreen(int finalScoreCount, int finalTotalKills)
     {
         //Disable during game UI
         //Reset scoreboard text?
@@ -55,7 +56,7 @@ public class CanvasManager : MonoBehaviour
 
 
         finalScore.text = finalScoreCount.ToString();
-
+        finalKillCount.text = finalTotalKills.ToString();
     }
 
     public void PlayAgainButton()
@@ -65,6 +66,6 @@ public class CanvasManager : MonoBehaviour
 
     public void AccessShop()
     {
-
+        SceneManager.LoadScene(2);
     }
 }

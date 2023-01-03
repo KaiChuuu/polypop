@@ -51,7 +51,7 @@ public class ShopManager : MonoBehaviour
             GameObject itemModel = Instantiate(gunList[i].weaponShopModel);
             itemModel.transform.SetParent(shopItem.transform.Find("ItemModels"));
 
-            shopItem.transform.SetParent(transform);
+            shopItem.transform.SetParent(transform.Find("Shop/ShopPanel/Contents"));
 
             shopItem.GetComponent<RectTransform>().localScale = new Vector3(1, 1, 1);
             shopItem.transform.localPosition = new Vector3(0,0,0);
@@ -69,5 +69,10 @@ public class ShopManager : MonoBehaviour
         //Debug.Log("button clicked " + index);
         string selectedGun = gunList[index].weaponName;
         PlayerPrefs.SetString("SelectedGun", selectedGun);
+    }
+
+    public void MenuButton()
+    {
+        SceneManager.LoadScene(0);
     }
 }
