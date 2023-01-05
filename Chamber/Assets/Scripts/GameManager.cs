@@ -49,7 +49,7 @@ public class GameManager : MonoBehaviour
 
         if (player.GetComponent<Player>().GetPlayerAliveStatus())
         {
-            playerScore = Mathf.FloorToInt(timePlayed % 60);
+            playerScore = Mathf.FloorToInt(timePlayed);
             canvas.GetComponent<CanvasManager>().UpdateScoreBoard(playerScore);
         }
     }

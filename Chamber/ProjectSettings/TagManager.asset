@@ -8,6 +8,7 @@ TagManager:
   - Spawner
   - PlayerModel
   - Bullet
+  - IslandObject
   layers:
   - Default
   - TransparentFX
@@ -21,7 +22,7 @@ TagManager:
   - Enemies
   - Player
   - Spawner
-  - 
+  - IslandObject
   - 
   - 
   - 
