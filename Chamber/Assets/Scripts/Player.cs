@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 {
     private NavMeshAgent playerAgent;
     
-    float playerSpeed = 0.05f;
+    float playerSpeed = 0.2f;
 
     static bool playerAlive = true;
     static bool isInputEnabled = true;

@@ -30,7 +30,7 @@ public class HighscoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
@@ -77,6 +77,39 @@ public class HighscoreManager : MonoBehaviour
         {
             for (int i = 0; i < highscoreEntries.highscoreEntryList.Count; i++)
             {
+                if (highscoreEntries.highscoreEntryList[i].score == playerScore)
+                {
+                    if(highscoreEntries.highscoreEntryList[i].killCount < playerTotalKills)
+                    {
+                        highscoreEntries.highscoreEntryList.Insert(i,
+                        new HighscoreEntry
+                        {
+                            score = playerScore,
+                            killCount = playerTotalKills,
+                            date = highscoreDay
+                        });
+                    }
+                    else
+                    {
+                        int newPosition = CheckListFromTotalKills(i+1, playerScore, playerTotalKills, highscoreDay);
+
+                        highscoreEntries.highscoreEntryList.Insert(newPosition,
+                        new HighscoreEntry
+                        {
+                            score = playerScore,
+                            killCount = playerTotalKills,
+                            date = highscoreDay
+                        });
+                    }
+
+                    if (highscoreEntries.highscoreEntryList.Count > 5)
+                    {
+                        highscoreEntries.highscoreEntryList.RemoveAt(highscoreEntries.highscoreEntryList.Count - 1);
+                    }
+
+                    break;
+                }
+
                 if (highscoreEntries.highscoreEntryList[i].score < playerScore)
                 {
                     highscoreEntries.highscoreEntryList.Insert(i,
@@ -94,6 +127,7 @@ public class HighscoreManager : MonoBehaviour
 
                     break;
                 }
+
                 if (i == highscoreEntries.highscoreEntryList.Count - 1 && highscoreEntries.highscoreEntryList.Count < savedScoreListLimit)
                 {
                     highscoreEntries.highscoreEntryList.Add(
@@ -111,6 +145,25 @@ public class HighscoreManager : MonoBehaviour
         PlayerPrefs.SetString("HighscoreEntries", updatedHighscoreEntriesJson);
         PlayerPrefs.Save();
         Debug.Log(PlayerPrefs.GetString("HighscoreEntries"));
+    }
+
+    public int CheckListFromTotalKills(int continuedIndex, int playerScore, int playerTotalKills, string highscoreDay)
+    {
+        for(int y = continuedIndex; y < highscoreEntries.highscoreEntryList.Count; y++)
+        {
+            if (highscoreEntries.highscoreEntryList[y].score == playerScore) 
+            {
+                if (highscoreEntries.highscoreEntryList[y].killCount < playerTotalKills)
+                {
+                    return y;
+                }
+            }
+            else
+            {
+                return y;
+            }
+        }
+        return highscoreEntries.highscoreEntryList.Count;
     }
 
     public List<HighscoreEntry> GetSavedHighscoreEntries()

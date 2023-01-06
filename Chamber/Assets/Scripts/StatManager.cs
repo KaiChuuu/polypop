@@ -32,14 +32,24 @@ public class StatManager : MonoBehaviour
     void DisplaySavedMatches()
     {
         List<HighscoreEntry> savedHighscoreEntries = highscoreManager.GetComponent<HighscoreManager>().GetSavedHighscoreEntries();
+
+        // Display titles for columns
+        // Required for equal spacing as objects in table, ~ needs to be the same gameObject?
+        GameObject columnTitles = Instantiate(displayRowObject);
+        columnTitles.transform.Find("MatchScoreColumn").GetComponent<TextMeshProUGUI>().text = "SCORE";
+        columnTitles.transform.Find("MatchKillsColumn").GetComponent<TextMeshProUGUI>().text = "TOTAL KILLS";
+        columnTitles.transform.Find("MatchDateColumn").GetComponent<TextMeshProUGUI>().text = "DATE";
+        columnTitles.transform.SetParent(transform.Find("ScoreboardRows"));
         
-        for(int i =0; i < savedHighscoreEntries.Count; i++)
+        // Display match values for top games
+        for (int i =0; i < savedHighscoreEntries.Count; i++)
         {
+
             GameObject singleMatch = Instantiate(displayRowObject);
 
-            singleMatch.transform.Find("MatchScore").GetComponent<TextMeshProUGUI>().text = savedHighscoreEntries[i].score.ToString();
-            singleMatch.transform.Find("MatchKills").GetComponent<TextMeshProUGUI>().text = savedHighscoreEntries[i].killCount.ToString();
-            singleMatch.transform.Find("MatchDate").GetComponent<TextMeshProUGUI>().text = savedHighscoreEntries[i].date;
+            singleMatch.transform.Find("MatchScoreColumn").GetComponent<TextMeshProUGUI>().text = savedHighscoreEntries[i].score.ToString();
+            singleMatch.transform.Find("MatchKillsColumn").GetComponent<TextMeshProUGUI>().text = savedHighscoreEntries[i].killCount.ToString();
+            singleMatch.transform.Find("MatchDateColumn").GetComponent<TextMeshProUGUI>().text = savedHighscoreEntries[i].date;
 
             singleMatch.transform.SetParent(transform.Find("ScoreboardRows"));
         }
