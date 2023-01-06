@@ -10,6 +10,7 @@ public class CanvasManager : MonoBehaviour
 {
     //During game UI
     public TextMeshProUGUI scoreBoard;
+    public GameObject gameMinimap;
 
     //Game over UI
     public GameObject gameOverObjects;
@@ -51,7 +52,8 @@ public class CanvasManager : MonoBehaviour
         //Disable during game UI
         //Reset scoreboard text?
         scoreBoard.gameObject.SetActive(false);
-        
+        gameMinimap.SetActive(false);
+
         gameOverObjects.SetActive(true);
 
 
