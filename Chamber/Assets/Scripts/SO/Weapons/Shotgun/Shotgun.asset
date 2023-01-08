@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponModel: {fileID: 231798297727170574, guid: 96b4aca7bc0452940860cc84f48cae6b,
     type: 3}
-  bulletType: {fileID: 6182013476090510646, guid: be0b4a15ecd53774ba25e4513995549b,
+  bulletType: {fileID: 8704024232728842531, guid: 6a6bc4f4efa0bda4fb25a252f0a7797c,
     type: 3}
   weaponName: Shotgun
-  weaponShopModel: {fileID: 3961644859542528472, guid: 73ca0e538aa2f3b42a3ab43187eda4a8,
+  weaponShopModel: {fileID: 1207938177315382426, guid: 73ca0e538aa2f3b42a3ab43187eda4a8,
     type: 3}

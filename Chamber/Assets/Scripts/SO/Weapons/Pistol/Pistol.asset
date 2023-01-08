@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b18fa1ed1cac414f89968e066868ae1, type: 3}
   m_Name: Pistol
   m_EditorClassIdentifier: 
-  weaponModel: {fileID: 2637094327953870013, guid: 21113b7a37f885d479f675ece2ea59ca,
+  weaponModel: {fileID: 4860665479086861960, guid: 21113b7a37f885d479f675ece2ea59ca,
     type: 3}
-  bulletType: {fileID: 6182013476090510646, guid: be0b4a15ecd53774ba25e4513995549b,
+  bulletType: {fileID: 8704024232728842531, guid: 6a6bc4f4efa0bda4fb25a252f0a7797c,
     type: 3}
   weaponName: Pistol
-  weaponShopModel: {fileID: 3961644859542528472, guid: 73ca0e538aa2f3b42a3ab43187eda4a8,
+  weaponShopModel: {fileID: 1207938177315382426, guid: 73ca0e538aa2f3b42a3ab43187eda4a8,
     type: 3}
