@@ -81,9 +81,9 @@ public class BasicEnemy : MonoBehaviour, IEnemyTemplate
         enemyAgent.destination = player.transform.position;
     }
 
-    public void SetEnemyStats(float speed, int health)
+    public void SetEnemyStats(int difficultyBuff, float speed, int health)
     {
         enemySpeed = speed;
-        enemyHealth = health;
+        enemyHealth = health + difficultyBuff;
     }
 }

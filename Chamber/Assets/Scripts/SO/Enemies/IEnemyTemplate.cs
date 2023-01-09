@@ -6,5 +6,5 @@ public interface IEnemyTemplate
 {
     public void MoveTowardPlayer();
 
-    public void SetEnemyStats(float speed, int health);
+    public void SetEnemyStats(int gameDifficulty, float enemySpeed, int enemyHealth);
 }

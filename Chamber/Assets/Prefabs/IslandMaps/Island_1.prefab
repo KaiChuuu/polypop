@@ -7328,7 +7328,7 @@ MonoBehaviour:
   enemyTypes:
   - {fileID: 11400000, guid: 142eb78efba7a454f9aea8b2ab9e57fc, type: 2}
   spawnSpeed: 2
-  spawnMaxAmount: 1
+  spawnMaxAmount: 2
 --- !u!1 &7723737092241871275
 GameObject:
   m_ObjectHideFlags: 0

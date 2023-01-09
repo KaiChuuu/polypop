@@ -9,6 +9,7 @@ TagManager:
   - PlayerModel
   - Bullet
   - IslandObject
+  - Weapon
   layers:
   - Default
   - TransparentFX

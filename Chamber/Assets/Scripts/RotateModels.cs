@@ -16,6 +16,13 @@ public class RotateModels : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(0, 0, rotationSpeed, Space.Self);
+        if(transform.tag == "Weapon")
+        {
+            transform.Rotate(0, rotationSpeed, 0, Space.World);
+        }
+        else
+        {
+            transform.Rotate(0, 0, rotationSpeed, Space.Self);
+        }
     }
 }

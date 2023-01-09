@@ -78,7 +78,7 @@ public class Player : MonoBehaviour
         //calculate if collided
         Vector3 collidedObject = playerRayTarget.GetComponent<TargetRayObject>().ShootRayAgainstScene();
         
-        Debug.Log(collidedObject + " hit position");
+        //Debug.Log(collidedObject + " hit position");
         if(collidedObject == new Vector3(-100, -100, -100))
         {
             //Default angle for bullets (i.e perfectly horizontal with weapon object)

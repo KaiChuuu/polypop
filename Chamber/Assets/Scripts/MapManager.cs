@@ -42,4 +42,12 @@ public class MapManager : MonoBehaviour
             mapSpawners[i].GetComponent<EnemySpawner>().StopSpawner();
         }
     }
+
+    public void IncreaseDifficulty()
+    {
+        for (int i = 0; i < mapSpawners.Length; i++)
+        {
+            mapSpawners[i].GetComponent<EnemySpawner>().IncreaseDifficulty();
+        }
+    }
 }

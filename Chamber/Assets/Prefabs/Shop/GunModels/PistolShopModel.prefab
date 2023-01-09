@@ -90,9 +90,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1984018102361554464}
+  - component: {fileID: 2855853862123013037}
   m_Layer: 0
   m_Name: PistolShopModel
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -106,7 +107,7 @@ Transform:
   m_GameObject: {fileID: 1207938177315382426}
   m_LocalRotation: {x: 0, y: 0, z: 0.42261827, w: 0.9063079}
   m_LocalPosition: {x: 0, y: 64, z: -210}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children:
   - {fileID: 471053360293907700}
   - {fileID: 4746529645768583355}
@@ -117,6 +118,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 50}
+--- !u!114 &2855853862123013037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1207938177315382426}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0d01fd1d0800da9448ce1b3a2bbdc388, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotationSpeed: 0.05
 --- !u!1 &2527422647280212825
 GameObject:
   m_ObjectHideFlags: 0

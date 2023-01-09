@@ -24,6 +24,9 @@ public class GameManager : MonoBehaviour
 
     public GameObject highscoreManager;
 
+    public int difficultyIncreaseThreshold = 20;
+    public int difficultyIncreaseTime = 20;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -50,6 +53,13 @@ public class GameManager : MonoBehaviour
         if (player.GetComponent<Player>().GetPlayerAliveStatus())
         {
             playerScore = Mathf.FloorToInt(timePlayed);
+
+            if(playerScore == difficultyIncreaseThreshold)
+            {
+                difficultyIncreaseThreshold += difficultyIncreaseTime;
+                currentIslandObject.GetComponent<MapManager>().IncreaseDifficulty();
+            }
+
             canvas.GetComponent<CanvasManager>().UpdateScoreBoard(playerScore);
         }
     }

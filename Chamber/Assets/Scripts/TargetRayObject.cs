@@ -40,17 +40,17 @@ public class TargetRayObject : MonoBehaviour
         {
             if(hit.transform.gameObject.GetComponent("TargetRayObject") == null)
             {
-                //Should not occur
-                Debug.Log("Missing Target Script!");
+                //When you shoot into spawner
+                //Debug.Log("Missing Target Script!");
                 return miss;
             }
 
-            Debug.Log("Did Hit Target");
+            //Debug.Log("Did Hit Target");
             return hit.transform.gameObject.GetComponent<TargetRayObject>().ActualObjectPosition();          
         }
         else
         {
-            Debug.Log("Did not Hit Target");
+            //Debug.Log("Did not Hit Target");
             return miss;
         }
     }
