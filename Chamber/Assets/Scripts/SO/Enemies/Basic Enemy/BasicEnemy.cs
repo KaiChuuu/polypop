@@ -33,16 +33,13 @@ public class BasicEnemy : MonoBehaviour, IEnemyTemplate
 
     void OnTriggerEnter(Collider collider)
     {
-        Debug.Log("hit something");
         if (collider.gameObject.tag == "PlayerModel")
         {
             collider.gameObject.GetComponent<PlayerModel>().DamagePlayer();
-            Debug.Log("hit player");
         }
         else if (collider.gameObject.tag == "Bullet")
         {
             //Lose hp
-            Debug.Log("hit enemy");
             UpdateHealth(collider.gameObject.GetComponent<IBulletTemplate>().GetBulletDamage());
 
             //Destroy bullet

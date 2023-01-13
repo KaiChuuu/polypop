@@ -9,6 +9,7 @@ using TMPro;
 public class CanvasManager : MonoBehaviour
 {
     //During game UI
+    public GameObject scoreboardBackground;
     public TextMeshProUGUI scoreBoard;
     public GameObject gameMinimap;
 
@@ -51,7 +52,7 @@ public class CanvasManager : MonoBehaviour
     {
         //Disable during game UI
         //Reset scoreboard text?
-        scoreBoard.gameObject.SetActive(false);
+        scoreboardBackground.SetActive(false);
         gameMinimap.SetActive(false);
 
         gameOverObjects.SetActive(true);

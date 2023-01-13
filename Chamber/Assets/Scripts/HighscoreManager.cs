@@ -58,8 +58,7 @@ public class HighscoreManager : MonoBehaviour
     public void UpdateScoreboard(int playerScore, int playerTotalKills)
     {
         DateTime localDay = DateTime.Today;
-        Debug.Log(localDay.ToString("d")); // MM/DD/YYYY
-        string highscoreDay = localDay.ToString("d");
+        string highscoreDay = localDay.ToString("d"); // MM/DD/YYYY
 
         // For empty scoreboards
         if (highscoreEntries.highscoreEntryList.Count == 0)
@@ -144,7 +143,6 @@ public class HighscoreManager : MonoBehaviour
         string updatedHighscoreEntriesJson = JsonUtility.ToJson(highscoreEntries);
         PlayerPrefs.SetString("HighscoreEntries", updatedHighscoreEntriesJson);
         PlayerPrefs.Save();
-        Debug.Log(PlayerPrefs.GetString("HighscoreEntries"));
     }
 
     public int CheckListFromTotalKills(int continuedIndex, int playerScore, int playerTotalKills, string highscoreDay)

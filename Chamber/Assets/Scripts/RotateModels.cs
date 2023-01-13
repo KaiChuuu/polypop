@@ -16,7 +16,7 @@ public class RotateModels : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(transform.tag == "Weapon")
+        if(transform.tag == "Weapon" || transform.tag == "BackgroundMenuIsland")
         {
             transform.Rotate(0, rotationSpeed, 0, Space.World);
         }

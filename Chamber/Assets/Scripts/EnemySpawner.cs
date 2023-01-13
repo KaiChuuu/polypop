@@ -28,7 +28,7 @@ public class EnemySpawner : MonoBehaviour
         {
             //Extra 1 in range, Math.Random max range is not inclusive
             int spawnAmount = Random.Range(difficultyLevel+1, difficultyLevel + spawnMaxAmount + 1);
-            Debug.Log(spawnAmount);
+
             for(int i =0; i<spawnAmount; i++)
             {
                 Vector3 spawnPosition = transform.position;

@@ -35,10 +35,10 @@ public class ShopManager : MonoBehaviour
         {
             GameObject shopItem = Instantiate(itemTemplate);
             
-            shopItem.transform.Find("GunName").GetComponent<TextMeshProUGUI>().text = gunList[i].weaponName;
+            shopItem.transform.Find("ItemBackground/GunNameBackground/GunName").GetComponent<TextMeshProUGUI>().text = gunList[i].weaponName;
 
             int j = i;
-            Button selectedButton = shopItem.transform.Find("SelectItem").GetComponent<Button>();
+            Button selectedButton = shopItem.transform.Find("ItemBackground/SelectItem").GetComponent<Button>();
 
             if (storedSelectedWeapon.Equals(gunList[i].weaponName))
             {
@@ -46,10 +46,10 @@ public class ShopManager : MonoBehaviour
                 selectedButton.interactable = false;
             }
 
-            shopItem.transform.Find("SelectItem").GetComponent<Button>().onClick.AddListener(() => SelectItemEvent(j, selectedButton));
+            shopItem.transform.Find("ItemBackground/SelectItem").GetComponent<Button>().onClick.AddListener(() => SelectItemEvent(j, selectedButton));
 
             GameObject itemModel = Instantiate(gunList[i].weaponShopModel);
-            itemModel.transform.SetParent(shopItem.transform.Find("ItemModels"));
+            itemModel.transform.SetParent(shopItem.transform.Find("ItemBackground/ItemModels"));
 
             shopItem.transform.SetParent(transform.Find("Shop/ShopPanel/Contents"));
 

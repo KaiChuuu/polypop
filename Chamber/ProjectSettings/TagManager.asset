@@ -10,6 +10,8 @@ TagManager:
   - Bullet
   - IslandObject
   - Weapon
+  - BackgroundObject
+  - BackgroundMenuIsland
   layers:
   - Default
   - TransparentFX
@@ -25,7 +27,7 @@ TagManager:
   - Spawner
   - IslandObject
   - MinimapObject
-  - 
+  - BackgroundObject
   - 
   - 
   - 
