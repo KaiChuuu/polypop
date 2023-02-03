@@ -3,6 +3,10 @@ Polypop is a topdown shooter game where the objective is to stay alive for as lo
 
 *Intially called Chamber, game name may still be revised in the future.
 
+<a href="https://github.com/RedDogClifford/chamber/">
+  <img src="/Images/PolyPopThumbnail.jpg" width="520" height="280">
+</a>
+
 ### How to play?
 WASD to move, Click to shoot
 
